@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    ifstream input("input.txt");
+    ifstream input("input1.txt");
     string result;
     vector<int>results;
 
