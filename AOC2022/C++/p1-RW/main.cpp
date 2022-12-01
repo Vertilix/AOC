@@ -1,26 +1,25 @@
 #include <iostream>
+#include <vector>
 #include <fstream>
+#include <bits/stdc++.h>
 
 using namespace std;
+
 int main(){
     int totalCalories = 0;
-    int prevNumber = 0;
-
+    vector<int>sumCalories;
     string line;
-
     ifstream input("input.txt");
 
     while(getline(input, line)){
         if(line.empty()){
-            if(totalCalories > prevNumber){
-                prevNumber = totalCalories;
-            }else if (prevNumber == 0){
-                prevNumber = totalCalories;
-            }
+            sumCalories.push_back(totalCalories);
             totalCalories = 0;
         }else{
             totalCalories += stoi(line);
         }
     }
-    cout << "Highest amount of calories " << prevNumber  << endl;
+
+    sort(sumCalories.begin(), sumCalories.end(), greater<int>());
+    cout << sumCalories[0];
 }
